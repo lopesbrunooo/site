@@ -1034,4 +1034,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===== SCRIPT PARA MOVER TEXTO "REASCENDENDO..." NO SLIDE 2 =====
+    
+    // Função para mover o texto "Reascendendo..." para a direita em resoluções baixas
+    function adjustSlide2Text() {
+        const slide2 = document.querySelector('.hero-section[data-slide="1"]');
+        if (!slide2) return;
+        
+        const reascendendoText = slide2.querySelector('.hero-content span');
+        if (!reascendendoText) return;
+        
+        // Verificar se é desktop com resolução baixa
+        const isLowResDesktop = window.innerWidth >= 1025 && window.innerWidth <= 1439;
+        
+        if (isLowResDesktop) {
+            // Mover o texto para a direita
+            reascendendoText.style.marginLeft = '60px';
+            reascendendoText.style.position = 'relative';
+            console.log('Texto "Reascendendo..." movido para direita em resolução baixa');
+        } else {
+            // Restaurar posição original
+            reascendendoText.style.marginLeft = '';
+            reascendendoText.style.position = '';
+        }
+    }
+    
+    // Executar quando a página carrega
+    adjustSlide2Text();
+    
+    // Executar quando a janela é redimensionada
+    window.addEventListener('resize', adjustSlide2Text);
+    
+    // Executar quando o slide 2 é ativado
+    function checkAndAdjustSlide2() {
+        const currentSlide = document.querySelector('.hero-section').getAttribute('data-slide');
+        if (currentSlide === '1') {
+            // Aguardar um pouco para o DOM ser atualizado
+            setTimeout(adjustSlide2Text, 100);
+        }
+    }
+    
+    // Observar mudanças no atributo data-slide
+    const heroSectionObserver = document.querySelector('.hero-section');
+    if (heroSectionObserver) {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'data-slide') {
+                    checkAndAdjustSlide2();
+                }
+            });
+        });
+        
+        observer.observe(heroSectionObserver, {
+            attributes: true,
+            attributeFilter: ['data-slide']
+        });
+    }
+
 });
