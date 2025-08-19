@@ -655,15 +655,20 @@ html, body {
     }
     
     /* Footer responsivo */
-    .footer {
-        padding: 30px 20px;
-    }
-    
-    .footer-container {
-        flex-direction: column;
-        gap: 25px;
-        text-align: center;
-    }
+.footer {
+    padding: 30px 20px;
+}
+
+.footer-container {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+}
+
+/* Centralizar o mini mapa em dispositivos móveis */
+.footer-map {
+    margin: 15px auto 0;
+}
     
     .footer-logo img {
         max-width: 120px;
@@ -1372,7 +1377,660 @@ html, body {
     .education-bubble p {
         font-size: 0.6rem;
     }
+}
+
+/* ===== NOVOS BREAKPOINTS PARA RESOLUÇÕES INTERMEDIÁRIAS ===== */
+
+/* Resoluções intermediárias (1220px - 1440px) - MANTÉM LAYOUT DESKTOP */
+@media screen and (min-width: 1220px) and (max-width: 1440px) {
+    /* Header responsivo */
+    .main-header {
+        padding: 2px 3%;
+    }
     
+    .header-container {
+        max-width: 1400px;
+    }
+    
+    .logo img {
+        height: 100px;
+        max-width: 320px;
+    }
+    
+    .main-nav ul {
+        gap: 25px;
+    }
+    
+    .main-nav a {
+        font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+    }
+    
+    /* Hero Section responsivo - MANTENDO FUNCIONAMENTO ORIGINAL */
+    .hero-container {
+        max-width: 1400px;
+        padding: 0 3%;
+    }
+    
+    .hero-content {
+        max-width: 55%;
+    }
+    
+    /* Ajustar apenas o tamanho das imagens decorativas */
+    .hero-section img[src*="eimagem.png"] {
+        right: -300px !important;
+        width: 450px !important;
+    }
+    
+    .hero-section img[src*="ava.png"] {
+        right: -100px !important;
+        width: 450px !important;
+    }
+    
+    /* Solutions Section responsivo */
+    .solutions-section {
+        padding: clamp(80px, 12vw, 180px) 3%;
+    }
+    
+    .solutions-container {
+        max-width: 1100px;
+        padding-right: 30px;
+        gap: 40px;
+    }
+    
+    .solutions-diagram {
+        width: min(100%, 550px);
+        height: 550px;
+    }
+    
+    .education-bubble {
+        width: 240px;
+        height: 240px;
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    }
+    
+    .central-logo-bubble {
+        width: 210px;
+        height: 210px;
+    }
+    
+    .central-logo-bubble img {
+        width: 100px;
+    }
+    
+    /* Ajustar posicionamento das bolhas para resoluções intermediárias */
+    .bubble-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-170px) rotate(0deg); }
+    .bubble-2 { transform: translate(-50%, -50%) rotate(72deg) translateY(-170px) rotate(-72deg); }
+    .bubble-3 { transform: translate(-50%, -50%) rotate(144deg) translateY(-170px) rotate(-144deg); }
+    .bubble-4 { transform: translate(-50%, -50%) rotate(216deg) translateY(-170px) rotate(-216deg); }
+    .bubble-5 { transform: translate(-50%, -50%) rotate(288deg) translateY(-170px) rotate(-72deg); }
+    
+    /* Ajustar hover effects */
+    .bubble-1:hover { transform: translate(-50%, -50%) rotate(0deg) translateY(-170px) rotate(0deg) scale(1.1); }
+    .bubble-2:hover { transform: translate(-50%, -50%) rotate(72deg) translateY(-170px) rotate(-72deg) scale(1.1); }
+    .bubble-3:hover { transform: translate(-50%, -50%) rotate(144deg) translateY(-170px) rotate(-144deg) scale(1.1); }
+    .bubble-4:hover { transform: translate(-50%, -50%) rotate(216deg) translateY(-170px) rotate(-216deg) scale(1.1); }
+    .bubble-5:hover { transform: translate(-50%, -50%) rotate(288deg) translateY(-170px) rotate(-288deg) scale(1.1); }
+    
+    /* Ajustar posicionamento das sub-bolhas */
+    .bubble-1 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-130px) rotate(0deg); }
+    .bubble-1 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(-36deg) translateY(-130px) translateX(-90px) rotate(36deg); }
+    .bubble-1 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(36deg) translateY(-130px) translateX(90px) rotate(-36deg); }
+    .bubble-2 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(72deg) translateY(-140px) rotate(-100deg); }
+    .bubble-2 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(36deg) translateY(-130px) translateX(-90px) rotate(-36deg); }
+    .bubble-2 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(108deg) translateY(-130px) translateX(90px) rotate(-108deg); }
+    .bubble-3 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(144deg) translateY(-160px) translateX(-20px) rotate(-144deg); }
+    .bubble-3 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(108deg) translateY(-130px) translateX(-90px) rotate(-108deg); }
+    .bubble-3 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(180deg) translateY(-130px) translateX(50px) rotate(-180deg); }
+    .bubble-4 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(216deg) translateY(-155px) translateX(25px) rotate(-216deg); }
+    .bubble-4 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(180deg) translateY(-130px) translateX(-50px) rotate(-180deg); }
+    .bubble-4 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(252deg) translateY(-140px) translateX(90px) rotate(-252deg); }
+    .bubble-5 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(288deg) translateY(-155px) translateX(25px) rotate(-288deg); }
+    .bubble-5 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(252deg) translateY(-130px) translateX(-50px) rotate(-252deg); }
+    .bubble-5 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(324deg) translateY(-130px) translateX(90px) rotate(-324deg); }
+    
+    /* Ajustar outras seções para resoluções intermediárias */
+    .about-section,
+    .materials-section,
+    .interdisciplinary-section,
+    .formative-journeys-section,
+    .ecosystem-section,
+    .professional-education-section {
+        padding: clamp(60px, 8vw, 120px) 3%;
+    }
+    
+    .about-container,
+    .materials-container,
+    .interdisciplinary-container,
+    .formative-journeys-container,
+    .ecosystem-container,
+    .professional-education-container {
+        max-width: 1000px;
+    }
+    
+    /* Ajustar posicionamento das imagens decorativas */
+    .solutions-section img[src*="eimagem.png"] {
+        right: -500px;
+        width: 450px;
+    }
+    
+    .materials-section img[src*="eimagem.png"],
+    .interdisciplinary-section img[src*="eimagem.png"],
+    .ecosystem-section img[src*="eimagem.png"],
+    .professional-education-section img[src*="eimagem.png"] {
+        right: -500px;
+        width: 450px;
+    }
+    
+    /* Ajustar footer para resoluções intermediárias */
+    .footer-container {
+        max-width: 1200px;
+        padding: 0 3%;
+    }
+    
+    .footer-column {
+        padding: 0 15px;
+    }
+    
+    .footer-logo {
+        max-width: 120px;
+    }
+    
+    .footer-map iframe {
+        height: 180px;
+    }
+}
 
+/* Resoluções pequenas (1024px - 1219px) - LAYOUT INTERMEDIÁRIO */
+@media screen and (min-width: 1024px) and (max-width: 1219px) {
+    /* Header responsivo */
+    .main-header {
+        padding: 2px 4%;
+    }
+    
+    .header-container {
+        max-width: 1200px;
+    }
+    
+    .logo img {
+        height: 90px;
+        max-width: 300px;
+    }
+    
+    .main-nav ul {
+        gap: 20px;
+    }
+    
+    .main-nav a {
+        font-size: clamp(0.8rem, 2vw, 0.8rem);
+    }
+    
+    /* Hero Section responsivo - MANTENDO FUNCIONAMENTO ORIGINAL */
+    .hero-container {
+        max-width: 1200px;
+        padding: 0 4%;
+    }
+    
+    .hero-content {
+        max-width: 60%;
+    }
+    
+    /* Ajustar apenas o tamanho das imagens decorativas */
+    .hero-section img[src*="eimagem.png"] {
+        right: -250px !important;
+        width: 400px !important;
+    }
+    
+    .hero-section img[src*="ava.png"] {
+        right: -80px !important;
+        width: 400px !important;
+    }
+    
+    /* Solutions Section responsivo */
+    .solutions-section {
+        padding: clamp(70px, 10vw, 150px) 4%;
+    }
+    
+    .solutions-container {
+        max-width: 1000px;
+        padding-right: 20px;
+        gap: 30px;
+    }
+    
+    .solutions-diagram {
+        width: min(100%, 500px);
+        height: 500px;
+    }
+    
+    .education-bubble {
+        width: 220px;
+        height: 220px;
+        font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    }
+    
+    .central-logo-bubble {
+        width: 190px;
+        height: 190px;
+    }
+    
+    .central-logo-bubble img {
+        width: 90px;
+    }
+    
+    /* Ajustar posicionamento das bolhas */
+    .bubble-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-150px) rotate(0deg); }
+    .bubble-2 { transform: translate(-50%, -50%) rotate(72deg) translateY(-150px) rotate(-72deg); }
+    .bubble-3 { transform: translate(-50%, -50%) rotate(144deg) translateY(-150px) rotate(-144deg); }
+    .bubble-4 { transform: translate(-50%, -50%) rotate(216deg) translateY(-150px) rotate(-216deg); }
+    .bubble-5 { transform: translate(-50%, -50%) rotate(288deg) translateY(-150px) rotate(-288deg); }
+    
+    /* Ajustar hover effects */
+    .bubble-1:hover { transform: translate(-50%, -50%) rotate(0deg) translateY(-150px) rotate(0deg) scale(1.1); }
+    .bubble-2:hover { transform: translate(-50%, -50%) rotate(72deg) translateY(-150px) rotate(-72deg) scale(1.1); }
+    .bubble-3:hover { transform: translate(-50%, -50%) rotate(144deg) translateY(-150px) rotate(-144deg) scale(1.1); }
+    .bubble-4:hover { transform: translate(-50%, -50%) rotate(216deg) translateY(-150px) rotate(-216deg) scale(1.1); }
+    .bubble-5:hover { transform: translate(-50%, -50%) rotate(288deg) translateY(-150px) rotate(-288deg) scale(1.1); }
+    
+    /* Ajustar outras seções */
+    .about-section,
+    .materials-section,
+    .interdisciplinary-section,
+    .formative-journeys-section,
+    .ecosystem-section,
+    .professional-education-section {
+        padding: clamp(50px, 7vw, 100px) 4%;
+    }
+    
+    .about-container,
+    .materials-container,
+    .interdisciplinary-container,
+    .formative-journeys-container,
+    .ecosystem-container,
+    .professional-education-container {
+        max-width: 900px;
+    }
+    
+    /* Ajustar posicionamento das imagens decorativas */
+    .solutions-section img[src*="eimagem.png"] {
+        right: -400px;
+        width: 400px;
+    }
+    
+    .materials-section img[src*="eimagem.png"],
+    .interdisciplinary-section img[src*="eimagem.png"],
+    .ecosystem-section img[src*="eimagem.png"],
+    .professional-education-section img[src*="eimagem.png"] {
+        right: -400px;
+        width: 400px;
+    }
+    
+    /* Ajustar footer para resoluções pequenas */
+    .footer-container {
+        max-width: 1000px;
+        padding: 0 4%;
+    }
+    
+    .footer-column {
+        padding: 0 12px;
+    }
+    
+    .footer-logo {
+        max-width: 110px;
+    }
+    
+    .footer-map iframe {
+        height: 160px;
+    }
+}
 
+/* ===== BREAKPOINT ESPECÍFICO PARA 1440x900 ===== */
+@media screen and (min-width: 1220px) and (max-width: 1440px) and (max-height: 900px) {
+    /* Apenas ajustes mínimos para evitar overflow - SEM MEXER NOS SLIDES */
+    .solutions-section {
+        padding: clamp(60px, 8vw, 120px) 3%;
+    }
+    
+    .solutions-diagram {
+        height: 500px;
+    }
+    
+    .education-bubble {
+        width: 220px;
+        height: 220px;
+        font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    }
+    
+    .central-logo-bubble {
+        width: 190px;
+        height: 190px;
+    }
+    
+    .central-logo-bubble img {
+        width: 90px;
+    }
+    
+    /* Ajustar posicionamento das bolhas para altura menor */
+    .bubble-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-150px) rotate(0deg); }
+    .bubble-2 { transform: translate(-50%, -50%) rotate(72deg) translateY(-150px) rotate(-72deg); }
+    .bubble-3 { transform: translate(-50%, -50%) rotate(144deg) translateY(-150px) rotate(-144deg); }
+    .bubble-4 { transform: translate(-50%, -50%) rotate(216deg) translateY(-150px) rotate(-216deg); }
+    .bubble-5 { transform: translate(-50%, -50%) rotate(288deg) translateY(-150px) rotate(-288deg); }
+    
+    /* Ajustar hover effects */
+    .bubble-1:hover { transform: translate(-50%, -50%) rotate(0deg) translateY(-150px) rotate(0deg) scale(1.1); }
+    .bubble-2:hover { transform: translate(-50%, -50%) rotate(72deg) translateY(-150px) rotate(-72deg) scale(1.1); }
+    .bubble-3:hover { transform: translate(-50%, -50%) rotate(144deg) translateY(-150px) rotate(-144deg) scale(1.1); }
+    .bubble-4:hover { transform: translate(-50%, -50%) rotate(216deg) translateY(-150px) rotate(-216deg) scale(1.1); }
+    .bubble-5:hover { transform: translate(-50%, -50%) rotate(288deg) translateY(-150px) rotate(-288deg) scale(1.1); }
+    
+    /* Ajustar posicionamento das sub-bolhas */
+    .bubble-1 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-120px) rotate(0deg); }
+    .bubble-1 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(-36deg) translateY(-120px) translateX(-80px) rotate(36deg); }
+    .bubble-1 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(36deg) translateY(-120px) translateX(80px) rotate(-36deg); }
+    .bubble-2 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(72deg) translateY(-130px) rotate(-100deg); }
+    .bubble-2 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(36deg) translateY(-120px) translateX(-80px) rotate(-36deg); }
+    .bubble-2 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(108deg) translateY(-120px) translateX(80px) rotate(-108deg); }
+    .bubble-3 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(144deg) translateY(-140px) translateX(-20px) rotate(-144deg); }
+    .bubble-3 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(108deg) translateY(-120px) translateX(-80px) rotate(-108deg); }
+    .bubble-3 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(180deg) translateY(-120px) translateX(50px) rotate(-180deg); }
+    .bubble-4 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(216deg) translateY(-135px) translateX(25px) rotate(-216deg); }
+    .bubble-4 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(180deg) translateY(-120px) translateX(-50px) rotate(-180deg); }
+    .bubble-4 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(252deg) translateY(-130px) translateX(80px) rotate(-252deg); }
+    .bubble-5 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(288deg) translateY(-135px) translateX(25px) rotate(-288deg); }
+    .bubble-5 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(252deg) translateY(-120px) translateX(-50px) rotate(-252deg); }
+    .bubble-5 .sub-bubble-3 { transform: translate(-50%, -50%) rotate(324deg) translateY(-120px) translateX(80px) rotate(-324deg); }
+    
+    /* Ajustar outras seções para altura menor */
+    .about-section,
+    .materials-section,
+    .interdisciplinary-section,
+    .formative-journeys-section,
+    .ecosystem-section,
+    .professional-education-section {
+        padding: clamp(50px, 6vw, 100px) 3%;
+    }
+    
+    /* Ajustar indicadores do hero para altura menor - POSICIONAMENTO CORRIGIDO */
+    .hero-section .hero-indicators {
+        bottom: 20px;
+        position: absolute;
+        z-index: 100;
+    }
+    
+    /* Ajustar posicionamento das imagens decorativas */
+    .hero-section img[src*="eimagem.png"] {
+        right: -250px !important;
+        width: 400px !important;
+    }
+    
+    .hero-section img[src*="ava.png"] {
+        right: -80px !important;
+        width: 400px !important;
+    }
+    
+    .solutions-section img[src*="eimagem.png"] {
+        right: -450px;
+        width: 400px;
+    }
+    
+    .materials-section img[src*="eimagem.png"],
+    .interdisciplinary-section img[src*="eimagem.png"],
+    .ecosystem-section img[src*="eimagem.png"],
+    .professional-education-section img[src*="eimagem.png"] {
+        right: -450px;
+        width: 400px;
+    }
+    
+    /* Ajustar setas de navegação para altura menor */
+    .hero-section .hero-nav-arrow {
+        bottom: 30px;
+    }
+    
+    .hero-section .hero-nav-arrow.hero-prev {
+        left: 20px;
+    }
+    
+    .hero-section .hero-nav-arrow.hero-next {
+        right: 20px;
+    }
+}
+
+/* ===== CORREÇÕES ESPECÍFICAS PARA SLIDES EM 1440x900 ===== */
+/* REMOVIDO - Mantendo funcionamento original dos slides */
+
+/* ===== AJUSTES ESPECÍFICOS PARA SLIDES EM RESOLUÇÕES MENORES ===== */
+@media screen and (min-width: 1220px) and (max-width: 1440px) {
+    /* Ajustar apenas o posicionamento dos textos dos slides - SEM ALTERAR TAMANHOS */
+    
+    /* Slide 1 - Texto principal - MOVIDO PARA DIREITA */
+    .hero-section[data-slide="0"] .hero-content {
+        margin-left: 20px !important;
+        transform: translateX(10px) !important;
+    }
+    
+    /* Slide 2 - slide2-content - ALINHADO À DIREITA - CORRIGIDO */
+    .hero-section[data-slide="1"] .slide2-content,
+    .hero-section[data-slide="1"] #slide2Content {
+        margin-left: 90px !important;
+        transform: translateX(50px) !important;
+        text-align: right !important;
+        margin-right: 50px !important;
+        padding-right: 20px !important;
+    }
+    
+    /* Forçar alinhamento à direita para todos os elementos do slide 2 */
+    .hero-section[data-slide="1"] .slide2-content *,
+    .hero-section[data-slide="1"] #slide2Content * {
+        text-align: right !important;
+    }
+    
+    /* SOBRESCREVER ESTILOS INLINE DO SLIDE 2 - REGRA MAIS ESPECÍFICA */
+    .hero-section[data-slide="1"] #slide2Content[style*="text-align: right"] {
+        text-align: right !important;
+        margin-left: 90px !important;
+        transform: translateX(50px) !important;
+        margin-right: 50px !important;
+        padding-right: 20px !important;
+    }
+    
+    /* Forçar alinhamento para elementos específicos do slide 2 */
+    .hero-section[data-slide="1"] #slide2Content h1,
+    .hero-section[data-slide="1"] #slide2Content strong,
+    .hero-section[data-slide="1"] #slide2Content span {
+        text-align: right !important;
+        display: block !important;
+    }
+    
+    /* Ajustar posicionamento dos indicadores para melhor visibilidade */
+    .hero-section .hero-indicators {
+        bottom: -150px !important;
+    }
+    
+    /* Ajustar posicionamento das setas de navegação */
+    .hero-section .hero-nav-arrow {
+        bottom: 40px !important;
+    }
+    
+    .hero-section .hero-nav-arrow.hero-prev {
+        left: 15px !important;
+    }
+    
+    .hero-section .hero-nav-arrow.hero-next {
+        right: 15px !important;
+    }
+
+    /* Ajuste específico para o texto "Reascendendo o Sentido de Ensinar e Aprender" */
+    .hero-section[data-slide="1"] #slide2Content span[style*="font-size: 0.8em"] {
+        margin-left: 90px !important;
+        transform: translateX(50px) !important;
+    }
+    
+    /* Ajuste específico para o slide 4 - Mover texto mais para a esquerda */
+    .hero-section[data-slide="3"] .hero-content div[style*="text-align: center"] {
+        left: 0px !important;
+    }
+    
+    .hero-section[data-slide="3"] .hero-content div[style*="position: absolute"] {
+        right: -1000px !important;
+    }
+    
+    /* REGRAS MAIS ESPECÍFICAS E FORTES PARA O SLIDE 4 */
+    body .hero-section[data-slide="3"] .hero-content div[style*="text-align: center"] {
+        left: 0px !important;
+        position: relative !important;
+    }
+    
+    body .hero-section[data-slide="3"] .hero-content div[style*="position: absolute"] {
+        right: -1000px !important;
+        position: absolute !important;
+    }
+    
+    /* REGRAS AINDA MAIS ESPECÍFICAS */
+    html body .hero-section[data-slide="3"] .hero-content div[style*="position: absolute"] {
+        right: -1000px !important;
+        position: absolute !important;
+    }
+    
+    /* Ajuste específico para o slide 3 - Mover "Pedagogia" para baixo */
+    .hero-section[data-slide="2"] .hero-content strong:first-child {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* REGRAS MAIS ESPECÍFICAS E FORTES PARA O SLIDE 3 */
+    body .hero-section[data-slide="2"] .hero-content strong:first-child {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* REGRAS AINDA MAIS ESPECÍFICAS */
+    html body .hero-section[data-slide="2"] .hero-content strong:first-child {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* REGRAS SUPER ESPECÍFICAS COM ATRIBUTOS */
+    .hero-section[data-slide="2"] .hero-content strong:first-child[style] {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    body .hero-section[data-slide="2"] .hero-content strong:first-child[style] {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* AJUSTE ESPECÍFICO PARA A PALAVRA "PEDAGOGIA" NO SLIDE 3 */
+    .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+    }
+    
+    /* REGRAS MAIS ESPECÍFICAS PARA "PEDAGOGIA" */
+    body .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+    }
+    
+    html body .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+    }
+    
+    /* REGRAS MAIS ESPECÍFICAS E FORTES PARA O SLIDE 3 */
+    body .hero-section[data-slide="2"] .hero-content strong:first-child {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* REGRAS AINDA MAIS ESPECÍFICAS */
+    html body .hero-section[data-slide="2"] .hero-content strong:first-child {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* REGRAS SUPER ESPECÍFICAS COM ATRIBUTOS */
+    .hero-section[data-slide="2"] .hero-content strong:first-child[style] {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    body .hero-section[data-slide="2"] .hero-content strong:first-child[style] {
+        margin-top: 20px !important;
+        display: block !important;
+    }
+    
+    /* AJUSTE ESPECÍFICO PARA A PALAVRA "PEDAGOGIA" NO SLIDE 3 */
+    .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+    }
+    
+    /* REGRAS MAIS ESPECÍFICAS PARA "PEDAGOGIA" */
+    body .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+    }
+    
+    html body .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1219px) {
+    /* Ajustar tamanhos para resoluções menores */
+    .hero-section {
+        min-height: 600px !important;
+        height: auto !important;
+    }
+    
+    .hero-container {
+        padding: 40px 20px !important;
+    }
+    
+    .hero-content {
+        margin: 0 auto !important;
+        max-width: 90% !important;
+    }
+    
+    /* Ajustar bolhas de soluções */
+    .solutions-bubbles {
+        gap: 15px !important;
+        margin-top: 30px !important;
+    }
+    
+    .bubble {
+        width: 120px !important;
+        height: 120px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* Ajustar imagem decorativa */
+    .hero-section img[src*="ava.png"],
+    .hero-section .ava-mini-logo {
+        position: absolute !important;
+        top: 300px !important;
+        right: -80px !important;
+        width: 400px !important;
+        height: auto !important;
+        z-index: 1 !important;
+        transition: none !important;
+        box-shadow: none !important;
+        pointer-events: none !important;
+    }
+    
+    /* Ajuste específico para o slide 4 - Mover texto mais para a esquerda */
+    .hero-section[data-slide="3"] .hero-content div[style*="text-align: center"] {
+        left: 0px !important;
+    }
+    
+    .hero-section[data-slide="3"] .hero-content div[style*="position: absolute"] {
+        right: -1000px !important;
+    }
+    
+    /* Ajuste específico para o slide 3 - Mover "Pedagogia" para baixo */
+    .hero-section[data-slide="2"] .hero-content strong:first-child {
+        margin-top: 20px !important;
+        display: block !important;
+    }
 }
