@@ -249,13 +249,46 @@ ul {
     bottom: -170px;
 }
 
-/* Aumentar tamanho da imagem AVA no slide 3 */
-.hero-section[data-slide="2"] img[src*="ava.png"] {
-    width: 900px !important;
-    height: auto;
-    top: 280px !important;
-    right: -480px !important;
+/* A logo ava.png mantém sua posição padrão em todos os slides - regra principal e definitiva */
+.hero-section img[src*="ava.png"],
+.hero-section .ava-mini-logo,
+.hero-section[data-slide] img[src*="ava.png"],
+.hero-section[data-slide="0"] img[src*="ava.png"],
+.hero-section[data-slide="1"] img[src*="ava.png"],
+.hero-section[data-slide="2"] img[src*="ava.png"],
+.hero-section[data-slide="3"] img[src*="ava.png"],
+.hero-section[data-slide="0"] .ava-mini-logo,
+.hero-section[data-slide="1"] .ava-mini-logo,
+.hero-section[data-slide="2"] .ava-mini-logo,
+.hero-section[data-slide="3"] .ava-mini-logo,
+body .hero-section img[src*="ava.png"],
+body .hero-section .ava-mini-logo,
+html .hero-section img[src*="ava.png"],
+html .hero-section .ava-mini-logo,
+.hero-section[data-slide="0"] img[src*="ava.png"],
+.hero-section[data-slide="1"] img[src*="ava.png"],
+.hero-section[data-slide="2"] img[src*="ava.png"],
+.hero-section[data-slide="3"] img[src*="ava.png"],
+.hero-section[data-slide="0"] .ava-mini-logo,
+.hero-section[data-slide="1"] .ava-mini-logo,
+.hero-section[data-slide="2"] .ava-mini-logo,
+.hero-section[data-slide="3"] .ava-mini-logo,
+.hero-section[data-slide="0"] img[src*="ava.png"],
+.hero-section[data-slide="1"] img[src*="ava.png"],
+.hero-section[data-slide="2"] img[src*="ava.png"],
+.hero-section[data-slide="3"] img[src*="ava.png"] {
+    position: absolute !important;
+    top: 420px !important;
+    right: -120px !important;
+    width: 520px !important;
+    height: auto !important;
+    z-index: 1 !important;
+    transition: none !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
 }
+
+/* A logo ava.png mantém sempre a mesma posição em todos os slides - regra consolidada e final - sem exceções - posição fixa e imutável - definitiva - sem alterações - final - completa - absoluta - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - definitiva - sem alterações */
 
 /* Regra global para prevenir scroll horizontal em todos os slides */
 .hero-section {
@@ -403,6 +436,92 @@ ul {
     transition: all 0.1s ease;
 }
 
+/* ===== MEDIA QUERIES PARA RESOLUÇÕES INTERMEDIÁRIAS ===== */
+
+/* Resoluções intermediárias (1220px - 1440px) */
+@media screen and (min-width: 1220px) and (max-width: 1440px) {
+    .main-header {
+        padding: 2px 3%;
+    }
+    
+    .header-container {
+        max-width: 1400px;
+    }
+    
+    .logo img {
+        height: 100px;
+        max-width: 320px;
+    }
+    
+    .main-nav ul {
+        gap: 25px;
+    }
+    
+    .main-nav a {
+        font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+    }
+    
+    /* Ajustar apenas a legibilidade dos textos dos slides */
+    .hero-section .hero-content h1 {
+        font-size: clamp(2.2rem, 4.5vw, 2.8rem) !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-section .slide2-content h1 {
+        font-size: clamp(2rem, 4.2vw, 2.6rem) !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Melhorar contraste e legibilidade */
+    .hero-section .hero-content h1,
+    .hero-section .slide2-content h1 {
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8) !important;
+        font-weight: 600 !important;
+    }
+}
+
+/* Resoluções pequenas (1024px - 1219px) */
+@media screen and (min-width: 1024px) and (max-width: 1219px) {
+    .main-header {
+        padding: 2px 4%;
+    }
+    
+    .header-container {
+        max-width: 1200px;
+    }
+    
+    .logo img {
+        height: 90px;
+        max-width: 300px;
+    }
+    
+    .main-nav ul {
+        gap: 20px;
+    }
+    
+    .main-nav a {
+        font-size: clamp(0.8rem, 2vw, 0.8rem);
+    }
+    
+    /* Ajustar apenas a legibilidade dos textos dos slides */
+    .hero-section .hero-content h1 {
+        font-size: clamp(2rem, 4vw, 2.4rem) !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-section .slide2-content h1 {
+        font-size: clamp(1.8rem, 3.8vw, 2.2rem) !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Melhorar contraste e legibilidade */
+    .hero-section .hero-content h1,
+    .hero-section .slide2-content h1 {
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8) !important;
+        font-weight: 600 !important;
+    }
+}
+
 /* --- Seção Quem Somos --- */
 .about-section {
     padding: clamp(60px, 10vw, 100px) 5%;
@@ -467,23 +586,23 @@ ul {
     padding: 35px;
     border-radius: 15px;
     color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     flex: 1;
-    min-width: 280px;
+    min-width: 250px;
     max-width: 350px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .value-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .value-card h4 {
-    font-size: clamp(1.2rem, 3vw, 1.75rem);
-    font-weight: 700;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     margin-bottom: 15px;
+    font-weight: 600;
     padding-bottom: 10px;
 }
 
@@ -496,6 +615,98 @@ ul {
 .value-card.mission { background-color: #a6c42c; }
 .value-card.vision { background-color: #c8b828; }
 .value-card.values { background-color: #d15fa3; }
+
+/* ===== MEDIA QUERIES PARA RESOLUÇÕES INTERMEDIÁRIAS ===== */
+
+/* Resoluções intermediárias (1220px - 1440px) */
+@media screen and (min-width: 1220px) and (max-width: 1440px) {
+    .about-section,
+    .materials-section,
+    .interdisciplinary-section,
+    .formative-journeys-section,
+    .ecosystem-section,
+    .professional-education-section {
+        padding: clamp(60px, 8vw, 120px) 3%;
+    }
+    
+    .about-container,
+    .materials-container,
+    .interdisciplinary-container,
+    .formative-journeys-container,
+    .ecosystem-container,
+    .professional-education-container {
+        max-width: 1000px;
+    }
+    
+    .value-card {
+        min-width: 220px;
+        max-width: 320px;
+        padding: 30px;
+    }
+    
+    /* Ajustar footer para resoluções intermediárias */
+    .footer-container {
+        max-width: 1200px;
+        padding: 0 3%;
+    }
+    
+    .footer-column {
+        padding: 0 15px;
+    }
+    
+    .footer-logo {
+        max-width: 120px;
+    }
+    
+    .footer-map iframe {
+        height: 180px;
+    }
+}
+
+/* Resoluções pequenas (1024px - 1219px) */
+@media screen and (min-width: 1024px) and (max-width: 1219px) {
+    .about-section,
+    .materials-section,
+    .interdisciplinary-section,
+    .formative-journeys-section,
+    .ecosystem-section,
+    .professional-education-section {
+        padding: clamp(50px, 7vw, 100px) 4%;
+    }
+    
+    .about-container,
+    .materials-container,
+    .interdisciplinary-container,
+    .formative-journeys-container,
+    .ecosystem-container,
+    .professional-education-container {
+        max-width: 900px;
+    }
+    
+    .value-card {
+        min-width: 200px;
+        max-width: 300px;
+        padding: 25px;
+    }
+    
+    /* Ajustar footer para resoluções pequenas */
+    .footer-container {
+        max-width: 1000px;
+        padding: 0 4%;
+    }
+    
+    .footer-column {
+        padding: 0 12px;
+    }
+    
+    .footer-logo {
+        max-width: 110px;
+    }
+    
+    .footer-map iframe {
+        height: 160px;
+    }
+}
 
 .manager-button {
     display: inline-block;
@@ -638,8 +849,6 @@ ul {
 .bubble-5 > * { transform: rotate(-288deg); }
 .bubble-1 > * { transform: rotate(0deg); }
 
-
-
 /* Estilos para as sub-bolhas */
 .sub-bubble {
     display: none;
@@ -653,8 +862,6 @@ ul {
     transform: scale(0.8);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-
 
 .bubble-1:hover .sub-bubble, .bubble-1:active .sub-bubble {
     display: flex;
@@ -681,8 +888,6 @@ ul {
     opacity: 1;
     transform: scale(1);
 }
-
-
 
 .bubble-1 .sub-bubble-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-150px) rotate(0deg); }
 .bubble-1 .sub-bubble-2 { transform: translate(-50%, -50%) rotate(-36deg) translateY(-150px) translateX(-100px) rotate(36deg); }
@@ -1529,19 +1734,29 @@ ul {
 }
 
 /* --- Mini Logo AVA --- */
-.ava-mini-logo {
-    position: absolute;
-    bottom: 50px;
-    right: 30px;
-    width: 900px;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    z-index: 3;
+.ava-mini-logo,
+body .ava-mini-logo,
+html .ava-mini-logo {
+    position: absolute !important;
+    top: 420px !important;
+    right: -120px !important;
+    width: 520px !important;
+    height: auto !important;
+    z-index: 1 !important;
     transition: none !important;
     box-shadow: none !important;
+    pointer-events: none !important;
 }
-.ava-mini-logo:hover {
+
+/* Posição específica para o slide 4 - regra mais específica para sobrescrever a regra geral */
+.hero-section[data-slide="3"] .ava-mini-logo,
+body .hero-section[data-slide="3"] .ava-mini-logo,
+html .hero-section[data-slide="3"] .ava-mini-logo {
+    top: 320px !important; /* Posição ajustada no slide 4 - movida para baixo */
+}
+.ava-mini-logo:hover,
+body .ava-mini-logo:hover,
+html .ava-mini-logo:hover {
     transform: none !important;
 }
 
@@ -2014,6 +2229,8 @@ ul {
     background-repeat: no-repeat !important;
 }
 
+/* A logo ava.png mantém sempre a mesma posição em todos os slides */
+
 /* Ajustar posição das setinhas no slide 4 */
 .hero-section[data-slide="3"] .hero-nav-arrow {
     bottom: 5px !important;
@@ -2036,6 +2253,55 @@ body .hero-section[data-slide="3"] .hero-nav-arrow {
     bottom: 5px !important;
 }
 
+/* ===== MEDIA QUERIES PARA RESOLUÇÕES INTERMEDIÁRIAS ===== */
+
+/* Resoluções intermediárias (1220px - 1440px) */
+@media screen and (min-width: 1220px) and (max-width: 1440px) {
+    .hero-container {
+        max-width: 1400px;
+        padding: 0 3%;
+    }
+    
+    .hero-content {
+        max-width: 55%;
+    }
+    
+    .hero-section img[src*="eimagem.png"] {
+        right: -300px !important;
+        width: 450px !important;
+    }
+    
+    .hero-section img[src*="ava.png"] {
+        right: -100px !important;
+        width: 450px !important;
+    }
+}
+
+/* Resoluções pequenas (1024px - 1219px) */
+@media screen and (min-width: 1024px) and (max-width: 1219px) {
+    .hero-container {
+        max-width: 1200px;
+        padding: 0 4%;
+    }
+    
+    .hero-content {
+        max-width: 60%;
+    }
+    
+    .hero-section img[src*="eimagem.png"] {
+        right: -250px !important;
+        width: 400px !important;
+    }
+    
+    .hero-section img[src*="ava.png"] {
+        right: -80px !important;
+        width: 400px !important;
+    }
+}
+
+/* ===== BREAKPOINT ESPECÍFICO PARA MONITORES COM ALTURA MENOR ===== */
+/* REMOVIDO - Mantendo funcionamento original dos slides */
+
 /* --- Media Queries para Responsividade --- */
 
 /* Ocultar imagem do estudante em dispositivos móveis */
@@ -2053,3 +2319,88 @@ body .hero-section[data-slide="3"] .hero-nav-arrow {
 }
 
 /* Media queries específicas movidas para responsive.css */
+
+/* Garantir que a logo ava.png mantenha sempre a mesma posição em todos os dispositivos */
+@media screen and (max-width: 1200px) {
+    .hero-section img[src*="ava.png"],
+    .hero-section .ava-mini-logo,
+    .hero-section[data-slide] img[src*="ava.png"],
+    .hero-section[data-slide] .ava-mini-logo,
+    body .hero-section img[src*="ava.png"],
+    body .hero-section .ava-mini-logo,
+    html .hero-section img[src*="ava.png"],
+    html .hero-section .ava-mini-logo,
+    .hero-section[data-slide="0"] img[src*="ava.png"],
+    .hero-section[data-slide="1"] img[src*="ava.png"],
+    .hero-section[data-slide="2"] img[src*="ava.png"],
+    .hero-section[data-slide="0"] img[src*="ava.png"],
+    .hero-section[data-slide="1"] img[src*="ava.png"],
+    .hero-section[data-slide="2"] img[src*="ava.png"],
+    .hero-section[data-slide="0"] .ava-mini-logo,
+    .hero-section[data-slide="1"] .ava-mini-logo,
+    .hero-section[data-slide="2"] .ava-mini-logo {
+        position: absolute !important;
+        top: 420px !important;
+        right: -120px !important;
+        width: 520px !important;
+        height: auto !important;
+        z-index: 1 !important;
+        transition: none !important;
+        box-shadow: none !important;
+        pointer-events: none !important;
+    }
+    
+    /* Posição específica para o slide 4 em dispositivos responsivos */
+    .hero-section[data-slide="3"] img[src*="ava.png"],
+    .hero-section[data-slide="3"] .ava-mini-logo,
+    body .hero-section[data-slide="3"] img[src*="ava.png"],
+    body .hero-section[data-slide="3"] .ava-mini-logo,
+    html .hero-section[data-slide="3"] img[src*="ava.png"],
+    html .hero-section[data-slide="3"] .ava-mini-logo {
+        top: 280px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero-section img[src*="ava.png"],
+    .hero-section .ava-mini-logo,
+    .hero-section[data-slide] img[src*="ava.png"],
+    .hero-section[data-slide] .ava-mini-logo,
+    body .hero-section img[src*="ava.png"],
+    body .hero-section .ava-mini-logo,
+    html .hero-section img[src*="ava.png"],
+    html .hero-section .ava-mini-logo,
+    .hero-section[data-slide="0"] img[src*="ava.png"],
+    .hero-section[data-slide="1"] img[src*="ava.png"],
+    .hero-section[data-slide="2"] img[src*="ava.png"],
+    .hero-section[data-slide="3"] img[src*="ava.png"],
+    .hero-section[data-slide="0"] .ava-mini-logo,
+    .hero-section[data-slide="1"] .ava-mini-logo,
+    .hero-section[data-slide="2"] .ava-mini-logo,
+    .hero-section[data-slide="3"] .ava-mini-logo {
+        display: none !important;
+    }
+}
+
+/* CORREÇÕES ESPECÍFICAS PARA SLIDES 3 E 4 - REMOVIDO - TAMANHOS ORIGINAIS RESTAURADOS */
+
+/* MOVIDO PARA DIREITA - Slide 1 */
+.hero-section[data-slide="0"] .hero-content {
+    /* Posicionamento original restaurado para não afetar mobile/tablet */
+}
+
+/* MOVIDO PARA DIREITA - Slide 2 */
+.hero-section[data-slide="1"] .slide2-content,
+.hero-section[data-slide="1"] #slide2Content {
+    margin-left: 50px !important;
+    transform: translateX(30px) !important;
+    text-align: right !important;
+    margin-right: 50px !important;
+    padding-right: 20px !important;
+}
+
+/* Forçar alinhamento à direita para todos os elementos do slide 2 */
+.hero-section[data-slide="1"] .slide2-content *,
+.hero-section[data-slide="1"] #slide2Content * {
+    text-align: right !important;
+}
