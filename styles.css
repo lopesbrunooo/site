@@ -223,6 +223,7 @@ ul {
 @media screen and (min-width: 1025px) {
     .hero-section[data-slide="2"] .hero-content strong:first-child {
         margin-left: 400px !important;
+        margin-top: 120px !important;
         text-align: right !important;
         color: #000000 !important;
     }
@@ -238,6 +239,113 @@ ul {
         color: #1e3a8a !important;
     }
 }
+
+/* REGRA SUPER ESPECÍFICA PARA MOVER "PEDAGOGIA" PARA CIMA - SOBRESCREVE TUDO */
+@media screen and (min-width: 1025px) {
+    .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 80px !important;
+        top: 80px !important;
+        position: relative !important;
+    }
+    
+    /* Regra ainda mais específica para garantir */
+    html body .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 80px !important;
+        top: 80px !important;
+        position: relative !important;
+    }
+    
+    /* Regra máxima de especificidade */
+    html body .hero-section[data-slide="2"] .hero-content strong:first-child[style*="margin-left: -50px"] {
+        margin-top: 80px !important;
+        top: 80px !important;
+        position: relative !important;
+    }
+}
+
+/* REGRA ESPECÍFICA PARA RESOLUÇÃO 1920x1080 - Mover "Pedagogia" para cima */
+@media screen and (min-width: 1920px) {
+    .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+        position: relative !important;
+    }
+    
+    /* Regra ainda mais específica para garantir */
+    html body .hero-section[data-slide="2"] .hero-content strong[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+        position: relative !important;
+    }
+    
+    /* Regra máxima de especificidade */
+    html body .hero-section[data-slide="2"] .hero-content strong:first-child[style*="margin-left: -50px"] {
+        margin-top: 20px !important;
+        top: 20px !important;
+        position: relative !important;
+    }
+}
+
+/* REGRA PARA MOVER TEXTO "REASCENDENDO..." DO SLIDE 2 PARA DIREITA - APENAS em resoluções baixas de desktop */
+@media screen and (min-width: 1025px) and (max-width: 1439px) {
+    /* Regra básica */
+    .hero-section[data-slide="1"] .hero-content span {
+        margin-left: 60px !important;
+        position: relative !important;
+    }
+    
+    /* Regra mais específica para garantir */
+    html body .hero-section[data-slide="1"] .hero-content span {
+        margin-left: 60px !important;
+        position: relative !important;
+    }
+    
+    /* Regra super específica por atributo style */
+    .hero-section[data-slide="1"] .hero-content span[style*="font-size: 0.8em"] {
+        margin-left: 60px !important;
+        position: relative !important;
+    }
+    
+    /* Regra máxima de especificidade */
+    html body .hero-section[data-slide="1"] .hero-content span[style*="font-size: 0.8em"] {
+        margin-left: 60px !important;
+        position: relative !important;
+    }
+    
+    /* Regra por conteúdo específico */
+    .hero-section[data-slide="1"] .hero-content span:contains("Reascendendo") {
+        margin-left: 60px !important;
+        position: relative !important;
+    }
+}
+
+/* REGRA ALTERNATIVA SUPER FORTE PARA O TEXTO "REASCENDENDO..." - SOBRESCREVE TUDO */
+@media screen and (min-width: 1025px) and (max-width: 1439px) {
+    /* Regra por atributo style específico */
+    .hero-section[data-slide="1"] .hero-content span[style*="top: -10px"] {
+        margin-left: 60px !important;
+        left: 60px !important;
+        position: relative !important;
+    }
+    
+    /* Regra máxima de especificidade */
+    html body .hero-section[data-slide="1"] .hero-content span[style*="top: -10px"] {
+        margin-left: 60px !important;
+        left: 60px !important;
+        position: relative !important;
+    }
+    
+    /* Regra por múltiplos atributos */
+    .hero-section[data-slide="1"] .hero-content span[style*="font-size: 0.8em"][style*="top: -10px"] {
+        margin-left: 60px !important;
+        left: 60px !important;
+        position: relative !important;
+    }
+}
+
+
+
+
 
 /* Ocultar botão no slide 3 */
 .hero-section[data-slide="2"] .cta-button {
@@ -288,33 +396,11 @@ html .hero-section .ava-mini-logo,
     pointer-events: none !important;
 }
 
-/* A logo ava.png mantém sempre a mesma posição em todos os slides - regra consolidada e final - sem exceções - posição fixa e imutável - definitiva - sem alterações - final - completa - absoluta - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - definitiva - sem alterações */
+/* A logo ava.png mantém sempre a mesma posição em todos os slides - regra consolidada e final - sem exceções - posição fixa e imutável - definitiva - sem alterações - final - completa - absoluta - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - completa - final - definitiva - sem alterações - final - definitiva - sem alterações */
 
 /* Regra global para prevenir scroll horizontal em todos os slides */
 .hero-section {
     overflow-x: hidden;
-}
-
-.hero-container {
-    overflow: hidden;
-}
-
-/* Conteúdo específico do slide 2 */
-.slide2-content {
-    text-align: right;
-    margin-left: auto;
-    margin-right: 50px;
-    padding-right: 20px;
-}
-
-.slide2-content h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    line-height: 1.3;
-    font-weight: 400;
-    margin-bottom: 30px;
-    color: #fff;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-    transition: opacity 0.6s ease;
 }
 
 .hero-container {
@@ -325,6 +411,7 @@ html .hero-section .ava-mini-logo,
     position: relative;
     z-index: 2;
     transform: none !important;
+    overflow: hidden;
 }
 
 .hero-content {
@@ -478,6 +565,12 @@ html .hero-section .ava-mini-logo,
         text-shadow: 2px 2px 8px rgba(0,0,0,0.8) !important;
         font-weight: 600 !important;
     }
+    
+    /* Mover o texto do slide 1 um pouco para a direita em resoluções intermediárias */
+    .hero-section[data-slide="0"] .hero-content {
+        margin-left: 60px !important;
+        text-align: left !important;
+    }
 }
 
 /* Resoluções pequenas (1024px - 1219px) */
@@ -519,6 +612,12 @@ html .hero-section .ava-mini-logo,
     .hero-section .slide2-content h1 {
         text-shadow: 2px 2px 8px rgba(0,0,0,0.8) !important;
         font-weight: 600 !important;
+    }
+    
+    /* Mover o texto do slide 1 um pouco para a direita em resoluções menores de desktop */
+    .hero-section[data-slide="0"] .hero-content {
+        margin-left: 80px !important;
+        text-align: left !important;
     }
 }
 
@@ -2384,23 +2483,31 @@ body .hero-section[data-slide="3"] .hero-nav-arrow {
 
 /* CORREÇÕES ESPECÍFICAS PARA SLIDES 3 E 4 - REMOVIDO - TAMANHOS ORIGINAIS RESTAURADOS */
 
-/* MOVIDO PARA DIREITA - Slide 1 */
-.hero-section[data-slide="0"] .hero-content {
-    /* Posicionamento original restaurado para não afetar mobile/tablet */
+/* Conteúdo específico do slide 2 */
+.slide2-content {
+    text-align: right;
+    margin-left: auto;
+    margin-right: 50px;
+    padding-right: 20px;
 }
 
-/* MOVIDO PARA DIREITA - Slide 2 */
-.hero-section[data-slide="1"] .slide2-content,
-.hero-section[data-slide="1"] #slide2Content {
-    margin-left: 50px !important;
-    transform: translateX(30px) !important;
-    text-align: right !important;
-    margin-right: 50px !important;
-    padding-right: 20px !important;
+.slide2-content h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.3;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    transition: opacity 0.6s ease;
 }
 
-/* Forçar alinhamento à direita para todos os elementos do slide 2 */
-.hero-section[data-slide="1"] .slide2-content *,
-.hero-section[data-slide="1"] #slide2Content * {
-    text-align: right !important;
-}
+
+
+
+
+
+
+
+
+
+
