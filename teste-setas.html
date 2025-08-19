@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste das Setas - Desktop</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            height: 400px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .hero-content h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: #333;
+            z-index: 3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-nav-arrow:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .hero-nav-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .hero-prev {
+            left: 20px;
+        }
+        
+        .hero-next {
+            right: 20px;
+        }
+        
+        .hero-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .hero-indicator {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-indicator.active {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(255, 255, 255, 1);
+            transform: scale(1.2);
+        }
+        
+        .test-info {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .test-info h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        
+        .status {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .status h3 {
+            margin: 0 0 10px 0;
+            color: #7b1fa2;
+        }
+        
+        .controls {
+            margin: 20px 0;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: #2196f3;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-nav-arrow {
+                display: none !important;
+            }
+            
+            .test-container {
+                padding: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste das Setas de Navegação</h1>
+        
+        <div class="test-info">
+            <h3>📋 Como Testar:</h3>
+            <ul>
+                <li><strong>Desktop:</strong> As setas devem estar visíveis e funcionais</li>
+                <li><strong>Mobile:</strong> As setas devem estar ocultas (teste redimensionando a janela)</li>
+                <li><strong>Clique nas setas:</strong> Deve navegar entre os slides</li>
+                <li><strong>Clique nos indicadores:</strong> Deve ir para slide específico</li>
+            </ul>
+        </div>
+        
+        <div class="hero-section" id="testHero">
+            <div class="hero-content">
+                <h1 id="heroTitle">Slide 1</h1>
+            </div>
+            
+            <button class="hero-nav-arrow hero-prev" id="heroPrev">
+                ←
+            </button>
+            <button class="hero-nav-arrow hero-next" id="heroNext">
+                →
+            </button>
+            
+            <div class="hero-indicators" id="heroIndicators"></div>
+        </div>
+        
+        <div class="status">
+            <h3>📊 Status do Sistema:</h3>
+            <p><strong>Dispositivo Móvel:</strong> <span id="mobileStatus">Verificando...</span></p>
+            <p><strong>Setas Visíveis:</strong> <span id="arrowsStatus">Verificando...</span></p>
+            <p><strong>Slide Atual:</strong> <span id="currentSlide">1</span> de <span id="totalSlides">4</span></p>
+            <p><strong>Event Listeners:</strong> <span id="listenersStatus">Verificando...</span></p>
+        </div>
+        
+        <div class="controls">
+            <h3>🔧 Controles de Teste:</h3>
+            <button onclick="testArrows()" class="btn btn-primary">Testar Setas</button>
+            <button onclick="resetSlides()" class="btn btn-success">Resetar Slides</button>
+            <button onclick="toggleResponsive()" class="btn btn-warning">Alternar Responsivo</button>
+        </div>
+    </div>
+
+    <script>
+        // Slides de teste
+        const testSlides = [
+            { title: 'Slide 1', color: 'linear-gradient(45deg, #667eea 0%, #764ba2 100%)' },
+            { title: 'Slide 2', color: 'linear-gradient(45deg, #f093fb 0%, #f5576c 100%)' },
+            { title: 'Slide 3', color: 'linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)' },
+            { title: 'Slide 4', color: 'linear-gradient(45deg, #43e97b 0%, #38f9d7 100%)' }
+        ];
+
+        let currentSlide = 0;
+        let listenersAdded = false;
+
+        // Elementos DOM
+        const heroSection = document.getElementById('testHero');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroPrev = document.getElementById('heroPrev');
+        const heroNext = document.getElementById('heroNext');
+        const heroIndicators = document.getElementById('heroIndicators');
+
+        // Criar indicadores
+        function createIndicators() {
+            heroIndicators.innerHTML = '';
+            testSlides.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = `hero-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.addEventListener('click', () => goToSlide(index));
+                heroIndicators.appendChild(indicator);
+            });
+        }
+
+        // Atualizar indicadores
+        function updateIndicators() {
+            const indicators = heroIndicators.querySelectorAll('.hero-indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Ir para slide específico
+        function goToSlide(index) {
+            if (index < 0) index = testSlides.length - 1;
+            if (index >= testSlides.length) index = 0;
+            
+            currentSlide = index;
+            const slide = testSlides[index];
+            
+            heroSection.style.background = slide.color;
+            heroTitle.textContent = slide.title;
+            updateIndicators();
+            updateStatus();
+        }
+
+        // Próximo slide
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        // Slide anterior
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // Adicionar event listeners para as setas
+        function addArrowListeners() {
+            if (heroPrev && heroNext && !listenersAdded) {
+                heroPrev.addEventListener('click', () => {
+                    console.log('Seta anterior clicada');
+                    prevSlide();
+                });
+
+                heroNext.addEventListener('click', () => {
+                    console.log('Seta próxima clicada');
+                    nextSlide();
+                });
+                
+                listenersAdded = true;
+                console.log('Event listeners das setas adicionados');
+            }
+        }
+
+        // Testar setas
+        function testArrows() {
+            console.log('Testando setas...');
+            console.log('heroPrev:', heroPrev);
+            console.log('heroNext:', heroNext);
+            console.log('listenersAdded:', listenersAdded);
+            
+            if (heroPrev && heroNext) {
+                alert('Setas encontradas! Clique nelas para testar a navegação.');
+            } else {
+                alert('Setas não encontradas! Verifique o console para mais detalhes.');
+            }
+        }
+
+        // Resetar slides
+        function resetSlides() {
+            goToSlide(0);
+        }
+
+        // Alternar responsivo (simular mobile)
+        function toggleResponsive() {
+            const container = document.querySelector('.test-container');
+            if (container.style.maxWidth === '400px') {
+                container.style.maxWidth = '800px';
+                alert('Modo desktop ativado');
+            } else {
+                container.style.maxWidth = '400px';
+                alert('Modo mobile ativado (redimensione a janela para ver as setas desaparecerem)');
+            }
+        }
+
+        // Atualizar status
+        function updateStatus() {
+            const isMobile = window.innerWidth <= 768;
+            const arrowsVisible = !isMobile;
+            
+            document.getElementById('mobileStatus').textContent = isMobile ? 'Sim' : 'Não';
+            document.getElementById('arrowsStatus').textContent = arrowsVisible ? 'Sim' : 'Não';
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            document.getElementById('totalSlides').textContent = testSlides.length;
+            document.getElementById('listenersStatus').textContent = listenersAdded ? 'Adicionados' : 'Não adicionados';
+        }
+
+        // Inicialização
+        createIndicators();
+        addArrowListeners();
+        updateStatus();
+
+        // Atualizar status quando a janela for redimensionada
+        window.addEventListener('resize', updateStatus);
+
+        // Verificar se as setas estão funcionando
+        setTimeout(() => {
+            if (!listenersAdded) {
+                console.warn('Event listeners das setas não foram adicionados automaticamente');
+                addArrowListeners();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

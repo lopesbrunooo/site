@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Mobile - Swipe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            height: 300px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            touch-action: pan-y pinch-zoom;
+            -webkit-overflow-scrolling: touch;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .hero-content h1 {
+            margin: 0;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        
+        .hero-indicator {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+        }
+        
+        .hero-indicator.active {
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(255, 255, 255, 1);
+            transform: scale(1.2);
+        }
+        
+        .hero-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: #333;
+            z-index: 3;
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .hero-nav-arrow.hero-prev {
+            left: 20px;
+        }
+        
+        .hero-nav-arrow.hero-next {
+            right: 20px;
+        }
+        
+        .hero-nav-arrow:hover,
+        .hero-nav-arrow:active {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .hero-nav-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .test-info {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .test-info h3 {
+            margin: 0 0 10px 0;
+            color: #1976d2;
+        }
+        
+        .test-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .test-info li {
+            margin: 5px 0;
+        }
+        
+        .swipe-feedback {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .swipe-feedback.show {
+            display: block;
+        }
+        
+        .swipe-feedback h3 {
+            margin: 0 0 10px 0;
+            color: #f57c00;
+        }
+        
+        @media (max-width: 768px) {
+            .test-container {
+                padding: 10px;
+            }
+            
+            .hero-section {
+                height: 250px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Teste de Funcionalidade Mobile</h1>
+        
+        <div class="test-info">
+            <h3>📱 Como Testar:</h3>
+            <ul>
+                <li><strong>Swipe Horizontal:</strong> Passe o dedo para a esquerda ou direita na área azul</li>
+                <li><strong>Setas de Navegação:</strong> Toque nas setas para navegar entre slides</li>
+                <li><strong>Indicadores:</strong> Toque nos pontos para ir para um slide específico</li>
+                <li><strong>Duplo Tap:</strong> Toque duas vezes para pausar/retomar autoplay</li>
+            </ul>
+        </div>
+        
+        <div class="hero-section" id="testHero">
+            <div class="hero-content">
+                <h1 id="heroTitle">Slide 1</h1>
+            </div>
+            
+            <button class="hero-nav-arrow hero-prev" id="heroPrev">
+                ←
+            </button>
+            <button class="hero-nav-arrow hero-next" id="heroNext">
+                →
+            </button>
+            
+            <div class="hero-indicators" id="heroIndicators"></div>
+        </div>
+        
+        <div class="swipe-feedback" id="swipeFeedback">
+            <h3>🎯 Swipe Detectado!</h3>
+            <p id="swipeInfo">Informações sobre o swipe aparecerão aqui.</p>
+        </div>
+        
+        <div class="test-section">
+            <h3>📊 Status do Sistema:</h3>
+            <p><strong>Dispositivo Móvel:</strong> <span id="mobileStatus">Verificando...</span></p>
+            <p><strong>Suporte a Toque:</strong> <span id="touchStatus">Verificando...</span></p>
+            <p><strong>Slide Atual:</strong> <span id="currentSlide">1</span> de <span id="totalSlides">4</span></p>
+            <p><strong>Autoplay:</strong> <span id="autoplayStatus">Ativo</span></p>
+        </div>
+        
+        <div class="test-section">
+            <h3>🔧 Controles de Teste:</h3>
+            <button onclick="toggleAutoplay()" style="padding: 10px 20px; margin: 5px; border: none; background: #2196f3; color: white; border-radius: 5px; cursor: pointer;">
+                Pausar/Retomar Autoplay
+            </button>
+            <button onclick="resetSlides()" style="padding: 10px 20px; margin: 5px; border: none; background: #4caf50; color: white; border-radius: 5px; cursor: pointer;">
+                Resetar Slides
+            </button>
+            <button onclick="showSwipeFeedback('Teste manual de feedback')" style="padding: 10px 20px; margin: 5px; border: none; background: #ff9800; color: white; border-radius: 5px; cursor: pointer;">
+                Testar Feedback
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Slides de teste
+        const testSlides = [
+            { title: 'Slide 1', color: 'linear-gradient(45deg, #667eea 0%, #764ba2 100%)' },
+            { title: 'Slide 2', color: 'linear-gradient(45deg, #f093fb 0%, #f5576c 100%)' },
+            { title: 'Slide 3', color: 'linear-gradient(45deg, #4facfe 0%, #00f2fe 100%)' },
+            { title: 'Slide 4', color: 'linear-gradient(45deg, #43e97b 0%, #38f9d7 100%)' }
+        ];
+
+        let currentSlide = 0;
+        let autoplayActive = true;
+        let autoplayInterval = null;
+
+        // Elementos DOM
+        const heroSection = document.getElementById('testHero');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroPrev = document.getElementById('heroPrev');
+        const heroNext = document.getElementById('heroNext');
+        const heroIndicators = document.getElementById('heroIndicators');
+        const swipeFeedback = document.getElementById('swipeFeedback');
+
+        // Criar indicadores
+        function createIndicators() {
+            heroIndicators.innerHTML = '';
+            testSlides.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.className = `hero-indicator ${index === 0 ? 'active' : ''}`;
+                indicator.addEventListener('click', () => goToSlide(index));
+                heroIndicators.appendChild(indicator);
+            });
+        }
+
+        // Atualizar indicadores
+        function updateIndicators() {
+            const indicators = heroIndicators.querySelectorAll('.hero-indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Ir para slide específico
+        function goToSlide(index) {
+            if (index < 0) index = testSlides.length - 1;
+            if (index >= testSlides.length) index = 0;
+            
+            currentSlide = index;
+            const slide = testSlides[index];
+            
+            heroSection.style.background = slide.color;
+            heroTitle.textContent = slide.title;
+            updateIndicators();
+            updateStatus();
+        }
+
+        // Próximo slide
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        // Slide anterior
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // Funcionalidade de swipe
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let isSwiping = false;
+
+        function handleTouchStart(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+            isSwiping = true;
+            
+            // Pausar autoplay durante swipe
+            pauseAutoplay();
+            
+            // Adicionar feedback visual
+            heroSection.classList.add('swiping');
+        }
+
+        function handleTouchMove(e) {
+            if (!isSwiping) return;
+            
+            const currentX = e.changedTouches[0].screenX;
+            const currentY = e.changedTouches[0].screenY;
+            const deltaX = Math.abs(currentX - touchStartX);
+            const deltaY = Math.abs(currentY - touchStartY);
+            
+            if (deltaX > deltaY && deltaX > 10) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!isSwiping) return;
+            
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            
+            const deltaX = Math.abs(touchEndX - touchStartX);
+            const deltaY = Math.abs(touchEndY - touchStartY);
+            
+            if (deltaX > 50 && deltaX > deltaY && deltaY < 100) {
+                if (touchEndX > touchStartX) {
+                    prevSlide();
+                    showSwipeFeedback('Swipe para direita detectado - Slide anterior');
+                } else {
+                    nextSlide();
+                    showSwipeFeedback('Swipe para esquerda detectado - Próximo slide');
+                }
+            }
+            
+            isSwiping = false;
+            heroSection.classList.remove('swiping');
+            
+            // Retomar autoplay
+            setTimeout(() => {
+                if (autoplayActive) {
+                    startAutoplay();
+                }
+            }, 1000);
+        }
+
+        // Autoplay
+        function startAutoplay() {
+            if (autoplayActive && !autoplayInterval) {
+                autoplayInterval = setInterval(nextSlide, 3000);
+            }
+        }
+
+        function pauseAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+        }
+
+        function toggleAutoplay() {
+            autoplayActive = !autoplayActive;
+            if (autoplayActive) {
+                startAutoplay();
+            } else {
+                pauseAutoplay();
+            }
+            updateStatus();
+        }
+
+        // Funções auxiliares
+        function resetSlides() {
+            goToSlide(0);
+            autoplayActive = true;
+            startAutoplay();
+            updateStatus();
+        }
+
+        function showSwipeFeedback(message) {
+            document.getElementById('swipeInfo').textContent = message;
+            swipeFeedback.classList.add('show');
+            setTimeout(() => {
+                swipeFeedback.classList.remove('show');
+            }, 3000);
+        }
+
+        function updateStatus() {
+            document.getElementById('mobileStatus').textContent = 
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+                window.innerWidth <= 768 ? 'Sim' : 'Não';
+            
+            document.getElementById('touchStatus').textContent = 
+                'ontouchstart' in window || navigator.maxTouchPoints > 0 ? 'Sim' : 'Não';
+            
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            document.getElementById('totalSlides').textContent = testSlides.length;
+            
+            document.getElementById('autoplayStatus').textContent = autoplayActive ? 'Ativo' : 'Pausado';
+        }
+
+        // Event listeners
+        heroSection.addEventListener('touchstart', handleTouchStart, { passive: false });
+        heroSection.addEventListener('touchmove', handleTouchMove, { passive: false });
+        heroSection.addEventListener('touchend', handleTouchEnd, { passive: false });
+
+        heroPrev.addEventListener('click', prevSlide);
+        heroNext.addEventListener('click', nextSlide);
+
+        // Inicialização
+        createIndicators();
+        updateStatus();
+        startAutoplay();
+
+        // Atualizar status quando a janela for redimensionada
+        window.addEventListener('resize', updateStatus);
+    </script>
+</body>
+</html>
