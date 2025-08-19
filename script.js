@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             background: 'assets/img/slide14.jpg',
-            title: `<div style="text-align: center; font-size: 0.9em; position: relative; top: -180px; left: -100px;"><p style="color: #000000; margin: 0 0 10px 0;"><strong>Não basta</strong> ensinar, <strong>é</strong></p><p style="color: #000000; font-size: 1.1em; text-transform: uppercase; font-weight: bold; margin: 0;">preciso TRANSFORMAR</p></div><div style="position: absolute; bottom: -300px; right: -900px; text-align: center; font-size: 0.9em; color: #000000;"><p style="margin: 0 0 5px 0;"><strong>Não basta</strong> informar, <strong>é preciso</strong></p><p style="font-size: 1.1em; text-transform: uppercase; font-weight: bold; margin: 0;">CONECTAR</p></div>`,
+            title: `<div style="text-align: center; font-size: 0.9em; position: relative; top: -180px; left: -100px;"><p style="color: #000000; margin: 0 0 10px 0;"><strong>Não basta</strong> ensinar, <strong>é preciso</strong></p><p style="color: #000000; font-size: 1.1em; text-transform: uppercase; font-weight: bold; margin: 0;">TRANSFORMAR</p></div><div style="position: absolute; bottom: -300px; right: -900px; text-align: center; font-size: 0.9em; color: #000000;"><p style="margin: 0 0 5px 0;"><strong>Não basta</strong> informar, <strong>é preciso</strong></p><p style="font-size: 1.1em; text-transform: uppercase; font-weight: bold; margin: 0;">CONECTAR</p></div>`,
             overlay: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 200, 0.9) 15%, rgba(173, 216, 230, 0.85) 30%, rgba(221, 160, 221, 0.8) 50%, rgba(255, 182, 193, 0.75) 70%, rgba(138, 43, 226, 0.7) 85%, rgba(0, 0, 139, 0.6) 100%)'
         }
     ];
@@ -234,16 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-                // Posicionar a imagem ava.png mais à direita no slide 4
-                if (index === 3) { // Slide 4
-                    const avaImage = document.querySelector('img[src*="ava.png"]');
-                    if (avaImage) {
-                        avaImage.style.right = '-350px';
-                        avaImage.style.top = '300px';
-                        avaImage.style.width = '700px';
-                        avaImage.style.transition = 'none';
-                    }
-                }
+                // A logo ava.png mantém sua posição padrão em todos os slides
 
             // Permitir nova transição após completar
             setTimeout(() => {
